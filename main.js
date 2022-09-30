@@ -18,8 +18,8 @@ function decode() {
 	let current = "";
 	let j = 0;
 	let part = 0;
-	let x = 0;
-	let y = 0;
+	let width = 0;
+	let height = 0;
 	let pixelSize = 0;
 
 	for (let i = 0; i < input.length; i++) {
@@ -36,9 +36,9 @@ function decode() {
 					let n = binaryAsciiToNumber(current);
 
 					if (part == 0) {
-						x = Number(String(x) + String(n));
+						width = Number(String(width) + String(n));
 					} else {
-						y = Number(String(y) + String(n));
+						height = Number(String(height) + String(n));
 					}
 
 					j = 0;
@@ -47,9 +47,9 @@ function decode() {
 			}
 		} else {
 			if (part == 2) {
-				console.log("X: ", x);
-				console.log("Y: ", y);
-				pixelSize = canvas.width / x;
+				console.log("Width: ", width, "px");
+				console.log("Height: ", height, "px");
+				pixelSize = canvas.width / width;
 				part++;
 				continue;
 			}
