@@ -1,0 +1,40 @@
+:root {
+	--spacing: 8px;
+	--canvas-width: 80vw;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: var(--spacing);
+	box-sizing: border-box;
+}
+
+canvas {
+	width: var(--canvas-width);
+	height: 100%;
+	border: black solid 1px;
+}
+
+form {
+	height: 100%;
+}
+
+form,
+#input {
+	width: calc(100vw - var(--canvas-width) - (3 * var(--spacing)));
+	min-width: calc(100vw - var(--canvas-width) - (3 * var(--spacing)));
+	max-width: calc(100vw - var(--canvas-width) - (3 * var(--spacing)));
+}
+
+#input {
+	padding: 0;
+	height: 80%;
+	min-height: 80%;
+	max-height: 80%;
+	margin-bottom: var(--spacing);
+}
