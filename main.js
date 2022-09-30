@@ -2,8 +2,19 @@ const canvas = document.getElementsByTagName("canvas")[0];
 const form = document.getElementsByTagName("form")[0];
 const inputElement = document.getElementById("input");
 const decodeBtn = document.getElementById("decode");
+const widthElement = document.getElementById("width");
+const heightElement = document.getElementById("height");
 
 const ctx = canvas.getContext("2d");
+
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
+ctx.fillStyle = "black";
+
+window.addEventListener("resize", () => {
+	canvas.width = canvas.offsetWidth;
+	canvas.height = canvas.offsetHeight;
+});
 
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -47,12 +58,29 @@ function decode() {
 			}
 		} else {
 			if (part == 2) {
+				pixelSize = canvas.width / width;
+				if (canvas.height / height < pixelSize) pixelSize = canvas.height / height;
+				widthElement.innerHTML = `Width: ${width}`;
+				heightElement.innerHTML = `Height: ${height}`;
 				console.log("Width: ", width, "px");
 				console.log("Height: ", height, "px");
-				pixelSize = canvas.width / width;
+				console.log("Pixel Size: ", pixelSize, "px");
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				part++;
-				continue;
 			}
+
+			for (let y = 0; y < height; y++) {
+				for (let x = 0; x < width; x++) {
+					console.log(`(${x}|${y}) ${input[i]}`);
+					if (input[i] == "1") {
+						console.log(x * pixelSize);
+						console.log(y * pixelSize);
+						ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+					}
+					i++;
+				}
+			}
+			break;
 		}
 	}
 }
