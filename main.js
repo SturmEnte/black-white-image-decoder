@@ -6,6 +6,7 @@ const widthElement = document.getElementById("width");
 const heightElement = document.getElementById("height");
 
 const ctx = canvas.getContext("2d");
+clearCanvas();
 
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
@@ -64,8 +65,7 @@ function decode() {
 				console.log("Width: ", width, "px");
 				console.log("Height: ", height, "px");
 				console.log("Pixel Size: ", pixelSize, "px");
-				ctx.fillStyle = "grey";
-				ctx.fillRect(0, 0, canvas.width, canvas.height);
+				clearCanvas();
 				part++;
 			}
 
@@ -85,6 +85,10 @@ function decode() {
 			break;
 		}
 	}
+}
+
+function clearCanvas() {
+	ctx.fillStyle = "grey";
 }
 
 function binaryAsciiToNumber(binary) {
