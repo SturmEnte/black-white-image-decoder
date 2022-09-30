@@ -2,7 +2,7 @@
 
 ## About
 
-This was made for a school project were we hat do come up with a coding for a black and white image
+[This](https://sturmente.github.io/black-white-image-decoder/) was made for a school project were we hat do come up with a coding for a black and white image
 
 ## How does the coding work
 
