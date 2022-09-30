@@ -9,7 +9,6 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
-ctx.fillStyle = "black";
 
 window.addEventListener("resize", () => {
 	canvas.width = canvas.offsetWidth;
@@ -65,7 +64,8 @@ function decode() {
 				console.log("Width: ", width, "px");
 				console.log("Height: ", height, "px");
 				console.log("Pixel Size: ", pixelSize, "px");
-				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.fillStyle = "grey";
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
 				part++;
 			}
 
@@ -73,8 +73,10 @@ function decode() {
 				for (let x = 0; x < width; x++) {
 					console.log(`(${x}|${y}) ${input[i]}`);
 					if (input[i] == "1") {
-						console.log(x * pixelSize);
-						console.log(y * pixelSize);
+						ctx.fillStyle = "black";
+						ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+					} else {
+						ctx.fillStyle = "white";
 						ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
 					}
 					i++;
