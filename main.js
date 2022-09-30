@@ -89,6 +89,7 @@ function decode() {
 
 function clearCanvas() {
 	ctx.fillStyle = "grey";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function binaryAsciiToNumber(binary) {
