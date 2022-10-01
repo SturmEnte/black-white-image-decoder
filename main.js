@@ -28,6 +28,8 @@ function decode() {
 	let input = inputElement.value.replace(/\s/g, "").split("");
 	let current = "";
 	let j = 0;
+	let x = 0;
+	let y = 0;
 	let part = 0;
 	let width = 0;
 	let height = 0;
@@ -69,20 +71,21 @@ function decode() {
 				part++;
 			}
 
-			for (let y = 0; y < height; y++) {
-				for (let x = 0; x < width; x++) {
-					console.log(`(${x}|${y}) ${input[i]}`);
-					if (input[i] == "1") {
-						ctx.fillStyle = "black";
-						ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-					} else {
-						ctx.fillStyle = "white";
-						ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-					}
-					i++;
-				}
+			console.log(`(${x}|${y}) ${input[i]}`);
+			if (input[i] == "1") {
+				ctx.fillStyle = "black";
+				ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+			} else {
+				ctx.fillStyle = "white";
+				ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
 			}
-			break;
+
+			x++;
+
+			if (x >= width) {
+				x = 0;
+				y++;
+			}
 		}
 	}
 }
