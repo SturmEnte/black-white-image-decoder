@@ -25,7 +25,7 @@ decodeBtn.addEventListener("click", () => {
 });
 
 function decode() {
-	let input = inputElement.value.split("");
+	let input = inputElement.value.replace(/\s/g, "").split("");
 	let current = "";
 	let j = 0;
 	let part = 0;
