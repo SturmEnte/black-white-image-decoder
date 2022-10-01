@@ -58,37 +58,39 @@ function decode() {
 					current = "";
 				}
 			}
+
+			continue;
+		}
+
+		// Initialize the pixel size and clear the canvas
+		if (part == 2) {
+			pixelSize = canvas.width / width;
+			if (canvas.height / height < pixelSize) pixelSize = canvas.height / height;
+			widthElement.innerHTML = `Width: ${width}`;
+			heightElement.innerHTML = `Height: ${height}`;
+			console.log("Width: ", width, "px");
+			console.log("Height: ", height, "px");
+			console.log("Pixel Size: ", pixelSize, "px");
+			clearCanvas();
+			part++;
+		}
+
+		// Draw the current pixel
+		console.log(`(${x}|${y}) ${input[i]}`);
+		if (input[i] == "1") {
+			ctx.fillStyle = "black";
+			ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
 		} else {
-			// Initialize the pixel size and clear the canvas
-			if (part == 2) {
-				pixelSize = canvas.width / width;
-				if (canvas.height / height < pixelSize) pixelSize = canvas.height / height;
-				widthElement.innerHTML = `Width: ${width}`;
-				heightElement.innerHTML = `Height: ${height}`;
-				console.log("Width: ", width, "px");
-				console.log("Height: ", height, "px");
-				console.log("Pixel Size: ", pixelSize, "px");
-				clearCanvas();
-				part++;
-			}
+			ctx.fillStyle = "white";
+			ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+		}
 
-			// Draw the current pixel
-			console.log(`(${x}|${y}) ${input[i]}`);
-			if (input[i] == "1") {
-				ctx.fillStyle = "black";
-				ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-			} else {
-				ctx.fillStyle = "white";
-				ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-			}
-
-			// Check if the current pixel is at the end of a row
-			// And if so, set x to 0 and increase y by 1
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
+		// Check if the current pixel is at the end of a row
+		// And if so, set x to 0 and increase y by 1
+		x++;
+		if (x >= width) {
+			x = 0;
+			y++;
 		}
 	}
 }
