@@ -119,4 +119,5 @@ function binaryAsciiToNumber(binary) {
 		case "00111001":
 			return 9;
 	}
+	return NaN;
 }
