@@ -59,6 +59,7 @@ function decode() {
 				}
 			}
 		} else {
+			// Initialize the pixel size and clear the canvas
 			if (part == 2) {
 				pixelSize = canvas.width / width;
 				if (canvas.height / height < pixelSize) pixelSize = canvas.height / height;
@@ -71,6 +72,7 @@ function decode() {
 				part++;
 			}
 
+			// Draw the current pixel
 			console.log(`(${x}|${y}) ${input[i]}`);
 			if (input[i] == "1") {
 				ctx.fillStyle = "black";
@@ -80,8 +82,9 @@ function decode() {
 				ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
 			}
 
+			// Check if the current pixel is at the end of a row
+			// And if so, set x to 0 and increase y by 1
 			x++;
-
 			if (x >= width) {
 				x = 0;
 				y++;
