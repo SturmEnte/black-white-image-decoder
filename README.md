@@ -13,12 +13,13 @@ The widht, height and the spaces at the end of both are in ascii
 I used `00000000` for space instead of `00100000`
 
 **Example:**
-
+```
 █░░█░█
 █░░█░░
 ████░█
 █░░█░█
 █░░█░█
+```
 
 `00110110000000000011010100000000100101100100111101100101100101`
 
